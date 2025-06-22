@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import api from "../../services/axiosInstance";
-import "../../assets/user/NearbySearch.css";
+import "../../assets/css/user/NearbySearch.css";
 import ErrorModal from "./errorModal";
 
 function LocationQuery() {

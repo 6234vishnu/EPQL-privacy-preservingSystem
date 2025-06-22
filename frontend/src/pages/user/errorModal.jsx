@@ -1,5 +1,5 @@
 import React from 'react';
-import '../../assets/user/ErrorModal.css';
+import '../../assets/css/user/ErrorModal.css';
 
 const ErrorModal = ({ message, onClose }) => {
   return (

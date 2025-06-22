@@ -1,0 +1,119 @@
+.loginPageContainer {
+  min-height: 100vh;
+  background-color: #111827;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
+}
+
+.loginPageCard {
+  width: 100%;
+  max-width: 400px;
+  background-color: #1f2937;
+  color: white;
+  border-radius: 1rem;
+  padding: 1.5rem;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+}
+
+.loginPageTitle {
+  font-size: 2rem;
+  font-weight: bold;
+  text-align: center;
+  color: #a78bfa;
+  margin-bottom: 1.5rem;
+}
+
+.loginPageForm {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.loginPageFormGroup {
+  display: flex;
+  flex-direction: column;
+}
+
+.loginPageLabel {
+  font-size: 0.9rem;
+  color: #d1d5db;
+  margin-bottom: 0.25rem;
+}
+
+.loginPageInput {
+  background-color: #374151;
+  border: 1px solid #4b5563;
+  padding: 0.5rem;
+  border-radius: 0.375rem;
+  color: white;
+}
+
+.loginPageInput:focus {
+  outline: 2px solid #8b5cf6;
+}
+
+.loginPageError {
+  color: #f87171;
+  text-align: center;
+  font-size: 0.875rem;
+}
+
+.loginPageButton {
+  width: 100%;
+  background-color: #8b5cf6;
+  color: white;
+  font-weight: 600;
+  padding: 0.5rem;
+  border: none;
+  border-radius: 0.375rem;
+  cursor: pointer;
+  margin-top: 1rem;
+}
+
+.loginPageButton:hover {
+  background-color: #7c3aed;
+}
+
+.loginPageDividerWrapper {
+  display: flex;
+  align-items: center;
+  margin: 1.5rem 0;
+}
+
+.loginPageDivider {
+  flex-grow: 1;
+  border: none;
+  border-top: 1px solid #4b5563;
+}
+
+.loginPageDividerText {
+  margin: 0 0.75rem;
+  color: #9ca3af;
+  font-size: 0.875rem;
+}
+
+.loginPageGoogleButton {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: white;
+  color: black;
+  font-weight: 600;
+  padding: 0.5rem;
+  border: none;
+  border-radius: 0.375rem;
+  gap: 0.5rem;
+  cursor: pointer;
+}
+
+.loginPageGoogleButton:hover {
+  background-color: #f3f4f6;
+}
+
+.loginPageGoogleIcon {
+  width: 20px;
+  height: 20px;
+}
