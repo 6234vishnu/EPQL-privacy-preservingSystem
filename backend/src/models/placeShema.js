@@ -1,4 +1,4 @@
-import mongoose from 'mongoose';
+import mongoose from "mongoose";
 
 const placeSchema = new mongoose.Schema({
   name: String,
@@ -7,24 +7,21 @@ const placeSchema = new mongoose.Schema({
   contact: String,
   encryptedCoords: {
     lat: String,
-    lng: String
+    lng: String,
   },
   location: {
     type: {
       type: String,
-      enum: ['Point'],
-      required: true
+      enum: ["Point"],
+      required: true,
     },
     coordinates: {
       type: [Number], // [lng, lat]
-      required: true
-    }
-  }
+      required: true,
+    },
+  },
 });
 
-placeSchema.index({ location: '2dsphere' }); // required for $nearSphere
+placeSchema.index({ location: "2dsphere" }); // required for $nearSphere
 
-export default mongoose.model('Places', placeSchema);
-
-
-
+export default mongoose.model("Places", placeSchema);

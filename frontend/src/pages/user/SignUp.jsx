@@ -6,11 +6,12 @@ import '../../assets/css/user/signUp.css'
  const SignUp = () => {
 
   const navigate=useNavigate()
-  const url=import.meta.env.VITE_FRONTEND_URL
+  const url=import.meta.env.VITE_BACKEND_URL
 
      const handleGoogleSignup = () => {
-    window.open(`${url}/auth/google/callback`, "_self");
+    window.open(`${url}/api/user/google`, "_self");
   };
+
 
   const [formData, setFormData] = useState({
     name: "",
@@ -29,7 +30,7 @@ import '../../assets/css/user/signUp.css'
   };
 
   const handleSubmit = async (e) => {
-    console.log("hellow");
+   
     e.preventDefault(); 
 
     if (formData.password !== formData.confirmPassword) {
@@ -46,11 +47,19 @@ import '../../assets/css/user/signUp.css'
         password: formData.password,
       });
 
-      console.log("Success response:", res.data);
-      navigate("/login")
+    if(res.data.success){
+      if(res.data.success){
+        if(res.data.admin){
+          return navigate("/admin/dashboard")
+        }
+        if(res.data.user){
+          return navigate("/")
+        }
+      }
+    }
     } catch (error) {
       console.error("API Error:", error.response?.data || error.message);
-      setError("Registration failed. Try again.");
+      setError(error?.response?.data?.message||"server error try later.");
     }
 
    

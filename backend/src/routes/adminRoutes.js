@@ -1,8 +1,12 @@
-import express from 'express'
-const adminRouter=express.Router()
-import { Locationupload } from '../controllers/admin/activitiesController.js'
+import express from "express";
+const adminRouter = express.Router();
+import {
+  Locationupload,
+  Getuserprofile,
+} from "../controllers/admin/activitiesController.js";
+import { verifyToken } from "../middlewares/verifyToken.js";
 
+adminRouter.post("/add/location", Locationupload);
+adminRouter.get("/profile", verifyToken, Getuserprofile);
 
-adminRouter.post("/location/add",Locationupload)
-
-export default adminRouter
+export default adminRouter;

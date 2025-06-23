@@ -1,0 +1,117 @@
+.AdmindashboardContainer {
+  color: #fff;
+  padding: 2rem;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.AdmindashboardHeader {
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.AdmindashboardTitle {
+  color: #ffffff; 
+  font-size: 2rem;
+  border-bottom: 2px solid #e50914;
+  display: inline-block;
+  padding-bottom: 0.5rem;
+}
+
+.AdmindashboardCards {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  gap: 2rem;
+  margin-bottom: 2rem;
+}
+
+.AdmindashboardCard {
+  background-color: #1a1a1a;
+  border: 1px solid #333;
+  border-radius: 10px;
+  padding: 1.5rem;
+  width: 300px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+}
+
+.AdmindashboardCard:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 0 15px #e50914;
+}
+
+.AdmindashboardCard h2 {
+  color: #e50914;
+  margin-bottom: 0.5rem;
+}
+
+.AdmindashboardCard p {
+  color: #ccc;
+}
+
+.AdmindashboardInfo {
+  background: rgba(26, 26, 26, 0.9); /* Dark glass-like background */
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  padding: 2rem;
+  border-radius: 16px;
+  border: 1px solid rgba(229, 9, 20, 0.2);
+  box-shadow: 0 8px 20px rgba(229, 9, 20, 0.15);
+  max-width: 600px;
+  margin: 2rem auto;
+  color: #ffffff;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.3s ease;
+}
+
+.AdmindashboardInfo::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 5px;
+  background-color: #e50914;
+  border-top-left-radius: 16px;
+  border-bottom-left-radius: 16px;
+}
+
+.AdmindashboardInfo p {
+  margin: 0.75rem 0;
+  font-size: 1.1rem;
+  color: #f2f2f2;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+}
+
+.AdmindashboardInfo p strong {
+  color: #e50914;
+  font-weight: 600;
+}
+
+/* Optional hover animation */
+.AdmindashboardInfo:hover {
+  transform: translateY(-4px);
+}
+
+
+/* Media Queries */
+@media (max-width: 768px) {
+  .AdmindashboardCards {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .AdmindashboardCard {
+    width: 90%;
+  }
+
+  .AdmindashboardTitle {
+    font-size: 1.5rem;
+  }
+
+  .AdmindashboardInfo {
+    width: 90%;
+  }
+}

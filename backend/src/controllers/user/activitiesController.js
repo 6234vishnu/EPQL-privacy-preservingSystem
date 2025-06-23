@@ -1,7 +1,9 @@
-import Places from '../../models/placeShema.js'
-import { decrypt } from '../../utils/encryptUtils.js'
+import Places from "../../models/placeShema.js";
+import { decrypt } from "../../utils/encryptUtils.js";
 
 export const findAddress = async (req, res) => {
+  console.log("call here");
+
   const { latitude, longitude, type } = req.body;
 
   const lat = parseFloat(latitude);
@@ -9,18 +11,23 @@ export const findAddress = async (req, res) => {
 
   // Validate coordinates
   if (
-    isNaN(lat) || isNaN(lng) ||
-    lat < -90 || lat > 90 ||
-    lng < -180 || lng > 180
+    isNaN(lat) ||
+    isNaN(lng) ||
+    lat < -90 ||
+    lat > 90 ||
+    lng < -180 ||
+    lng > 180
   ) {
-    return res.status(400).json({ success: false, message: 'Invalid coordinates provided' });
+    return res
+      .status(400)
+      .json({ success: false, message: "Invalid coordinates provided" });
   }
 
   const query = {
     location: {
       $nearSphere: {
         $geometry: {
-          type: 'Point',
+          type: "Point",
           coordinates: [lng, lat], // MongoDB expects [longitude, latitude]
         },
         $maxDistance: 5000, // 5km radius
@@ -29,26 +36,26 @@ export const findAddress = async (req, res) => {
   };
 
   if (type) {
-    query.type = { $regex: new RegExp(type, 'i') };
+    query.type = { $regex: new RegExp(type, "i") };
   }
 
   try {
     const nearbyPlaces = await Places.find(query);
 
-    const results = nearbyPlaces.map(place => ({
+    const results = nearbyPlaces.map((place) => ({
       ...place._doc,
       decryptedCoords: {
         lat: decrypt(place.encryptedCoords.lat),
-        lng: decrypt(place.encryptedCoords.lng)
-      }
+        lng: decrypt(place.encryptedCoords.lng),
+      },
     }));
 
     return res.status(200).json({
       success: true,
-      nearbyPlaces: results
+      nearbyPlaces: results,
     });
   } catch (err) {
     console.error(err);
-    return res.status(500).json({ success: false, message: 'Server Error' });
+    return res.status(500).json({ success: false, message: "Server Error" });
   }
 };

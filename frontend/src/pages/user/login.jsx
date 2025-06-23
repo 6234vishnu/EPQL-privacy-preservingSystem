@@ -4,10 +4,6 @@ import api from "../../services/axiosInstance";
 import '../../assets/css/user/login.css'
 
  const Login = () => {
-      const url=import.meta.env.VITE_FRONTEND_URL
-   const handleGoogleLogin = () => {
-    window.location.href = `${url}/auth/google/callback`;
-  };
     const navigate=useNavigate()
   const [formData, setFormData] = useState({
     email: "",
@@ -15,6 +11,11 @@ import '../../assets/css/user/login.css'
   });
 
   const [error, setError] = useState("");
+      const url=import.meta.env.VITE_BACKEND_URL
+   const handleGoogleLogin = () => {
+    window.location.href = `${url}/api/user/google`;
+  };
+  
 
   const handleChange = (e) => {
     setFormData((prev) => ({
@@ -36,7 +37,7 @@ import '../../assets/css/user/login.css'
 
       if(res.data.success){
         if(res.data.admin){
-          return navigate("/AdminDashboard")
+          return navigate("/admin/dashboard")
         }
         if(res.data.user){
           return navigate("/")
@@ -46,7 +47,7 @@ import '../../assets/css/user/login.css'
 
     } catch (error) {
       console.error("Login error:", error.response?.data || error.message);
-      setError("server error try later.");
+      setError(error?.response?.data?.message||"server error try later.");
     }
   };
 

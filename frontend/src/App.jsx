@@ -5,7 +5,9 @@ import './App.css'
 import LocationQuery from './pages/user/LocationQuery'
 import SignUp from './pages/user/SignUp'
 import Login from './pages/user/login'
-import AdminPage from './pages/admin/adminDashboard'
+import AdminAddLocation from './pages/admin/adminAddLocation'
+import AdminDashboard from './pages/admin/adminDashboard'
+import UserProfile from './pages/user/userProfile'
 
 function App() {
 
@@ -18,9 +20,11 @@ function App() {
       <Route path="/findPlaces" element={<LocationQuery/>}/>
       <Route path="/signUp" element={<SignUp/>}/>
       <Route path="/login" element={<Login/>}/>
+      <Route path="/profile" element={<UserProfile/>}/>
 
       {/* admin side */}
-      <Route path="/AdminDashboard" element={<AdminPage/>}/>
+      <Route path="/admin/dashboard" element={<AdminDashboard/>}/>
+      <Route path="/admin/addLocation" element={<AdminAddLocation/>}/>
      </Routes>
      </BrowserRouter>
     </>

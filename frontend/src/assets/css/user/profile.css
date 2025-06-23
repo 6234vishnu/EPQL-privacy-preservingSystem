@@ -1,0 +1,508 @@
+/* Netflix-themed User Profile Styles */
+.userProfileContainer {
+  
+  background: linear-gradient(135deg, #141414 0%, #000000 100%);
+      border-radius: 25px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+}
+.userProfileButtonDisabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+.userProfileCard {
+  background: rgba(20, 20, 20, 0.95);
+  border: 1px solid rgba(229, 9, 20, 0.3);
+  border-radius: 16px;
+  width: 100%;
+  max-width: 800px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(10px);
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.userProfileCard:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 40px rgba(229, 9, 20, 0.2);
+}
+
+/* Profile Header */
+.userProfileHeader {
+  background: linear-gradient(135deg, #1a1a1a 0%, #0a0a0a 100%);
+  padding: 2.5rem;
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  border-bottom: 1px solid rgba(229, 9, 20, 0.2);
+}
+
+.userProfileImageSection {
+  flex-shrink: 0;
+}
+
+.userProfileImageWrapper {
+  position: relative;
+  width: 120px;
+  height: 120px;
+}
+
+.userProfileImage {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  border: 4px solid #e50914;
+  object-fit: cover;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.userProfileImage:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 25px rgba(229, 9, 20, 0.5);
+}
+
+.userProfileImageOverlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.7);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  cursor: pointer;
+}
+
+.userProfileImageWrapper:hover .userProfileImageOverlay {
+  opacity: 1;
+}
+
+.userProfileImageLabel {
+  cursor: pointer;
+  color: #ffffff;
+  transition: color 0.3s ease;
+}
+
+.userProfileImageLabel:hover {
+  color: #e50914;
+}
+
+.userProfileCameraIcon {
+  width: 32px;
+  height: 32px;
+}
+
+.userProfileImageInput {
+  display: none;
+}
+
+.userProfileHeaderInfo {
+  flex-grow: 1;
+}
+
+.userProfileName {
+  color: #ffffff;
+  font-size: 2.25rem;
+  font-weight: 700;
+  margin: 0 0 0.5rem 0;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+  letter-spacing: 0.5px;
+}
+
+.userProfileEmail {
+  color: #cccccc;
+  font-size: 1.1rem;
+  margin: 0;
+  opacity: 0.9;
+}
+
+.userProfileActions {
+  flex-shrink: 0;
+}
+
+/* Profile Content */
+.userProfileContent {
+  padding: 2.5rem;
+}
+
+.userProfileForm {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.userProfileFormGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+}
+
+.userProfileFormGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.userProfileBioGroup {
+  grid-column: 1 / -1;
+}
+
+.userProfileLabel {
+  color: #ffffff;
+  font-weight: 600;
+  font-size: 0.95rem;
+  letter-spacing: 0.3px;
+  text-transform: uppercase;
+}
+
+.userProfileInput,
+.userProfileTextarea {
+  background: #2a2a2a;
+  border: 2px solid #333333;
+  border-radius: 8px;
+  padding: 1rem;
+  color: #ffffff;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  outline: none;
+  font-family: inherit;
+}
+
+.userProfileInput:focus,
+.userProfileTextarea:focus {
+  border-color: #e50914;
+  background: #1a1a1a;
+  box-shadow: 0 0 0 3px rgba(229, 9, 20, 0.1);
+}
+
+.userProfileInput::placeholder,
+.userProfileTextarea::placeholder {
+  color: #888888;
+}
+
+.userProfileTextarea {
+  resize: vertical;
+  min-height: 100px;
+}
+
+.userProfileValue {
+  background: #1a1a1a;
+  border: 2px solid #2a2a2a;
+  border-radius: 8px;
+  padding: 1rem;
+  color: #ffffff;
+  font-size: 1rem;
+  min-height: 24px;
+  display: flex;
+  align-items: center;
+}
+
+.userProfileBioValue {
+  min-height: 100px;
+  align-items: flex-start;
+  line-height: 1.5;
+}
+
+/* Buttons */
+.userProfileButton {
+  border: none;
+  border-radius: 8px;
+  padding: 0.75rem 1.5rem;
+  font-size: 0.95rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.userProfileButtonPrimary {
+  background: linear-gradient(45deg, #e50914, #b8070f);
+  color: #ffffff;
+}
+
+.userProfileButtonPrimary::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.5s;
+}
+
+.userProfileButtonPrimary:hover {
+  background: linear-gradient(45deg, #b8070f, #e50914);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(229, 9, 20, 0.4);
+}
+
+.userProfileButtonPrimary:hover::before {
+  left: 100%;
+}
+
+.userProfileButtonSecondary {
+  background: transparent;
+  color: #ffffff;
+  border: 2px solid #666666;
+}
+
+.userProfileButtonSecondary:hover {
+  border-color: #e50914;
+  color: #e50914;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(229, 9, 20, 0.2);
+}
+
+.userProfileSubmitSection {
+  display: flex;
+  justify-content: center;
+  margin-top: 1rem;
+}
+
+.userProfileSubmitButton {
+  padding: 1rem 3rem;
+  font-size: 1rem;
+}
+
+/* Messages */
+.userProfileError {
+  background: rgba(220, 53, 69, 0.1);
+  border: 1px solid #dc3545;
+  border-radius: 8px;
+  padding: 1rem;
+  color: #ff6b6b;
+  font-size: 0.95rem;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+.userProfileSuccess {
+  background: rgba(40, 167, 69, 0.1);
+  border: 1px solid #28a745;
+  border-radius: 8px;
+  padding: 1rem;
+  color: #51cf66;
+  font-size: 0.95rem;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+/* Media Queries for Responsiveness */
+
+/* Large Desktop */
+@media (min-width: 1200px) {
+  
+  
+  .userProfileCard {
+    max-width: 900px;
+  }
+  
+  .userProfileHeader {
+    padding: 3rem;
+  }
+  
+  .userProfileContent {
+    padding: 3rem;
+  }
+  
+  .userProfileName {
+    font-size: 2.5rem;
+  }
+  
+  .userProfileImageWrapper {
+    width: 140px;
+    height: 140px;
+  }
+}
+
+/* Tablet */
+@media (max-width: 768px) {
+ 
+  
+  .userProfileCard {
+    margin: 0 0.5rem;
+  }
+  
+  .userProfileHeader {
+    padding: 2rem;
+    flex-direction: column;
+    text-align: center;
+    gap: 1.5rem;
+  }
+  
+  .userProfileContent {
+    padding: 2rem;
+  }
+  
+  .userProfileFormGrid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  
+  .userProfileName {
+    font-size: 2rem;
+  }
+  
+  .userProfileImageWrapper {
+    width: 100px;
+    height: 100px;
+  }
+  
+  .userProfileHeaderInfo {
+    order: 1;
+  }
+  
+  .userProfileActions {
+    order: 2;
+  }
+}
+
+/* Mobile */
+@media (max-width: 480px) {
+  
+  
+  .userProfileCard {
+    border-radius: 12px;
+    margin: 0;
+  }
+  
+  .userProfileHeader {
+    padding: 1.5rem;
+    gap: 1.25rem;
+  }
+  
+  .userProfileContent {
+    padding: 1.5rem;
+  }
+  
+  .userProfileName {
+    font-size: 1.75rem;
+  }
+  
+  .userProfileEmail {
+    font-size: 1rem;
+  }
+  
+  .userProfileImageWrapper {
+    width: 80px;
+    height: 80px;
+  }
+  
+  .userProfileInput,
+  .userProfileTextarea,
+  .userProfileValue {
+    padding: 0.875rem;
+    font-size: 0.95rem;
+  }
+  
+  .userProfileButton {
+    padding: 0.75rem 1.25rem;
+    font-size: 0.9rem;
+  }
+  
+  .userProfileSubmitButton {
+    padding: 0.875rem 2rem;
+    font-size: 0.95rem;
+  }
+  
+  .userProfileForm {
+    gap: 1.5rem;
+  }
+  
+  .userProfileFormGrid {
+    gap: 1.25rem;
+  }
+}
+
+/* Extra Small Mobile */
+@media (max-width: 320px) {
+ 
+  
+  .userProfileHeader {
+    padding: 1.25rem;
+  }
+  
+  .userProfileContent {
+    padding: 1.25rem;
+  }
+  
+  .userProfileName {
+    font-size: 1.5rem;
+  }
+  
+  .userProfileImageWrapper {
+    width: 70px;
+    height: 70px;
+  }
+  
+  .userProfileInput,
+  .userProfileTextarea,
+  .userProfileValue {
+    padding: 0.75rem;
+    font-size: 0.9rem;
+  }
+  
+  .userProfileButton {
+    padding: 0.625rem 1rem;
+    font-size: 0.85rem;
+  }
+}
+
+/* Dark mode enhancements */
+@media (prefers-color-scheme: dark) {
+  .userProfileContainer {
+    background: linear-gradient(135deg, #0a0a0a 0%, #000000 100%);
+  }
+  
+  .userProfileCard {
+    background: rgba(15, 15, 15, 0.98);
+    border-color: rgba(229, 9, 20, 0.4);
+  }
+  
+  .userProfileHeader {
+    background: linear-gradient(135deg, #151515 0%, #050505 100%);
+  }
+}
+
+/* High contrast mode */
+@media (prefers-contrast: high) {
+  .userProfileInput,
+  .userProfileTextarea,
+  .userProfileValue {
+    border-width: 3px;
+  }
+  
+  .userProfileButton {
+    border-width: 2px;
+  }
+  
+  .userProfileImage {
+    border-width: 5px;
+  }
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .userProfileCard,
+  .userProfileImage,
+  .userProfileButton,
+  .userProfileInput,
+  .userProfileTextarea,
+  .userProfileImageOverlay {
+    transition: none;
+  }
+  
+  .userProfileButtonPrimary::before {
+    display: none;
+  }
+}
