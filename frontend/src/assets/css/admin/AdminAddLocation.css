@@ -2,12 +2,11 @@
 .adminDashboardContainer {
   min-height: 100vh;
   background: linear-gradient(135deg, #141414 0%, #000000 100%);
-  
-  
+
   display: flex;
   flex-direction: column;
   align-items: center;
-  font-family: 'Helvetica Neue', Arial, sans-serif;
+  font-family: "Helvetica Neue", Arial, sans-serif;
 }
 
 .adminDashboardProfileWrapper {
@@ -158,13 +157,18 @@
 }
 
 .adminDashboardButton::before {
-  content: '';
+  content: "";
   position: absolute;
   top: 0;
   left: -100%;
   width: 100%;
   height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.2),
+    transparent
+  );
   transition: left 0.5s;
 }
 
@@ -194,13 +198,11 @@
 
 /* Large Desktop */
 @media (min-width: 1200px) {
- 
-  
   .adminDashboardCard {
     max-width: 700px;
     padding: 3rem;
   }
-  
+
   .adminDashboardTitle {
     font-size: 2.5rem;
   }
@@ -208,23 +210,21 @@
 
 /* Tablet */
 @media (max-width: 768px) {
- 
-  
   .adminDashboardCard {
     padding: 2rem;
     margin: 0 0.5rem;
   }
-  
+
   .adminDashboardTitle {
     font-size: 1.75rem;
     margin-bottom: 1.5rem;
   }
-  
+
   .adminDashboardRow {
     grid-template-columns: 1fr;
     gap: 1.5rem;
   }
-  
+
   .adminDashboardProfileImage {
     width: 70px;
     height: 70px;
@@ -234,41 +234,40 @@
 /* Mobile */
 @media (max-width: 480px) {
   .adminDashboardContainer {
-   
     min-height: 100vh;
   }
-  
+
   .adminDashboardCard {
     padding: 1.5rem;
     margin: 0;
     border-radius: 8px;
   }
-  
+
   .adminDashboardTitle {
     font-size: 1.5rem;
     margin-bottom: 1.25rem;
   }
-  
+
   .adminDashboardForm {
     gap: 1.25rem;
   }
-  
+
   .adminDashboardInput,
   .adminDashboardTextArea {
     padding: 0.75rem;
     font-size: 0.95rem;
   }
-  
+
   .adminDashboardButton {
     padding: 0.875rem 1.5rem;
     font-size: 0.95rem;
   }
-  
+
   .adminDashboardProfileImage {
     width: 60px;
     height: 60px;
   }
-  
+
   .adminDashboardProfileWrapper {
     margin-bottom: 1.5rem;
   }
@@ -277,22 +276,21 @@
 /* Extra Small Mobile */
 @media (max-width: 320px) {
   .adminDashboardContainer {
-  
   }
-  
+
   .adminDashboardCard {
     padding: 1.25rem;
   }
-  
+
   .adminDashboardTitle {
     font-size: 1.25rem;
   }
-  
+
   .adminDashboardInput,
   .adminDashboardTextArea {
     padding: 0.625rem;
   }
-  
+
   .adminDashboardButton {
     padding: 0.75rem 1.25rem;
     font-size: 0.9rem;
@@ -304,7 +302,7 @@
   .adminDashboardContainer {
     background: linear-gradient(135deg, #0a0a0a 0%, #000000 100%);
   }
-  
+
   .adminDashboardCard {
     background: rgba(15, 15, 15, 0.98);
     border-color: rgba(229, 9, 20, 0.4);
@@ -317,7 +315,7 @@
   .adminDashboardTextArea {
     border-width: 3px;
   }
-  
+
   .adminDashboardButton {
     border: 2px solid #ffffff;
   }
@@ -332,7 +330,7 @@
   .adminDashboardTextArea {
     transition: none;
   }
-  
+
   .adminDashboardButton::before {
     display: none;
   }

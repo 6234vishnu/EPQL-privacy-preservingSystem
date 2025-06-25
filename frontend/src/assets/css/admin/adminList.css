@@ -1,0 +1,741 @@
+/* Admin Place List Styles */
+
+/* Container */
+.adminPlaceList-container {
+  width: 100vw;
+  margin: 0 auto;
+
+  background-color: #141414;
+
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+/* Header */
+.adminPlaceList-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+  padding: 20px;
+  background: linear-gradient(135deg, #e50914 0%, #b20710 100%);
+  border-radius: 12px;
+  color: white;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+}
+
+.adminPlaceList-title {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 28px;
+  font-weight: 700;
+  margin: 0;
+}
+
+.adminPlaceList-icon {
+  width: 32px;
+  height: 32px;
+}
+
+.adminPlaceList-stats {
+  background: rgba(255, 255, 255, 0.2);
+  padding: 8px 16px;
+  border-radius: 20px;
+  backdrop-filter: blur(10px);
+}
+
+.adminPlaceList-count {
+  font-size: 14px;
+  font-weight: 600;
+}
+
+/* Loading State */
+.adminPlaceList-loading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 300px;
+  color: #b3b3b3;
+}
+
+.adminPlaceList-spinner {
+  width: 40px;
+  height: 40px;
+  border: 3px solid #333333;
+  border-top: 3px solid #e50914;
+  border-radius: 50%;
+  animation: adminPlaceList-spin 1s linear infinite;
+  margin-bottom: 16px;
+}
+
+@keyframes adminPlaceList-spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* Grid Layout */
+.adminPlaceList-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  gap: 24px;
+  margin-bottom: 40px;
+}
+
+/* Card Styles */
+.adminPlaceList-card {
+  background: #1f1f1f;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+  overflow: hidden;
+  transition: all 0.3s ease;
+  border: 1px solid #333333;
+}
+
+.adminPlaceList-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 25px rgba(229, 9, 20, 0.2);
+  border-color: #e50914;
+}
+
+.adminPlaceList-cardHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  background: linear-gradient(135deg, #2a2a2a 0%, #1a1a1a 100%);
+  border-bottom: 1px solid #333333;
+}
+
+.adminPlaceList-placeName {
+  font-size: 18px;
+  font-weight: 700;
+  color: #ffffff;
+  margin: 0;
+  flex: 1;
+  margin-right: 12px;
+}
+
+.adminPlaceList-editBtn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: #e50914;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.adminPlaceList-editBtn:hover {
+  background: #b20710;
+  transform: translateY(-1px);
+}
+
+.adminPlaceList-cardBody {
+  padding: 20px;
+}
+
+.adminPlaceList-field {
+  display: flex;
+  margin-bottom: 12px;
+  align-items: flex-start;
+}
+
+.adminPlaceList-label {
+  font-weight: 600;
+  color: #b3b3b3;
+  min-width: 80px;
+  margin-right: 12px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 14px;
+}
+
+.adminPlaceList-value {
+  color: #ffffff;
+  flex: 1;
+  font-size: 14px;
+  line-height: 1.4;
+}
+
+.adminPlaceList-coordinates {
+  font-family: "Courier New", monospace;
+  background: #333333;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 13px;
+  color: #e50914;
+}
+
+/* Pagination */
+.adminPlaceList-pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  margin-top: 40px;
+  padding: 20px;
+  background: #1f1f1f;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+}
+
+.adminPlaceList-pageBtn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: #e50914;
+  color: white;
+  border: none;
+  padding: 10px 16px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.adminPlaceList-pageBtn:hover:not(.adminPlaceList-disabled) {
+  background: #b20710;
+  transform: translateY(-1px);
+}
+
+.adminPlaceList-pageBtn.adminPlaceList-disabled {
+  background: #666666;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.adminPlaceList-pageNumbers {
+  display: flex;
+  gap: 4px;
+  margin: 0 16px;
+}
+
+.adminPlaceList-pageNumber {
+  background: #333333;
+  color: #b3b3b3;
+  border: 1px solid #666666;
+  padding: 8px 12px;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  min-width: 40px;
+}
+
+.adminPlaceList-pageNumber:hover {
+  background: #666666;
+  transform: translateY(-1px);
+}
+
+.adminPlaceList-pageNumber.adminPlaceList-active {
+  background: #e50914;
+  color: white;
+  border-color: #e50914;
+}
+
+/* Modal Styles */
+.adminPlaceList-modalOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 20px;
+  backdrop-filter: blur(4px);
+}
+
+.adminPlaceList-modal {
+  background: #1f1f1f;
+  border-radius: 16px;
+  max-width: 600px;
+  width: 100%;
+  max-height: 90vh;
+  overflow-y: auto;
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.5),
+    0 10px 10px -5px rgba(0, 0, 0, 0.3);
+  animation: adminPlaceList-modalAppear 0.3s ease-out;
+  border: 1px solid #333333;
+}
+
+@keyframes adminPlaceList-modalAppear {
+  from {
+    opacity: 0;
+    transform: scale(0.95) translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+.adminPlaceList-modalHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 24px;
+  border-bottom: 1px solid #333333;
+  background: linear-gradient(135deg, #2a2a2a 0%, #1a1a1a 100%);
+}
+
+.adminPlaceList-modalTitle {
+  font-size: 20px;
+  font-weight: 700;
+  color: #ffffff;
+  margin: 0;
+}
+
+.adminPlaceList-closeBtn {
+  background: none;
+  border: none;
+  color: #b3b3b3;
+  padding: 8px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.adminPlaceList-closeBtn:hover {
+  background: #333333;
+  color: #ffffff;
+}
+
+/* Form Styles */
+.adminPlaceList-form {
+  padding: 24px;
+}
+
+.adminPlaceList-formGroup {
+  margin-bottom: 20px;
+}
+
+.adminPlaceList-formLabel {
+  display: block;
+  font-weight: 600;
+  color: #b3b3b3;
+  margin-bottom: 6px;
+  font-size: 14px;
+}
+
+.adminPlaceList-formInput,
+.adminPlaceList-formTextarea {
+  width: 100%;
+  padding: 12px;
+  border: 2px solid #333333;
+  border-radius: 8px;
+  font-size: 14px;
+  transition: all 0.3s ease;
+  background: #2a2a2a;
+  color: #ffffff;
+  box-sizing: border-box;
+}
+
+.adminPlaceList-formInput:focus,
+.adminPlaceList-formTextarea:focus {
+  outline: none;
+  border-color: #e50914;
+  background: #1a1a1a;
+  box-shadow: 0 0 0 3px rgba(229, 9, 20, 0.2);
+}
+
+.adminPlaceList-formTextarea {
+  resize: vertical;
+  min-height: 80px;
+  font-family: inherit;
+}
+
+.adminPlaceList-coordsGroup {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.adminPlaceList-modalFooter {
+  display: flex;
+  gap: 12px;
+  justify-content: flex-end;
+  padding-top: 20px;
+  border-top: 1px solid #e2e8f0;
+}
+
+.adminPlaceList-cancelBtn {
+  background: #f1f5f9;
+  color: #475569;
+  border: 1px solid #e2e8f0;
+  padding: 12px 20px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.adminPlaceList-cancelBtn:hover {
+  background: #e2e8f0;
+  transform: translateY(-1px);
+}
+
+.adminPlaceList-saveBtn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: #e50914;
+  color: white;
+  border: none;
+  padding: 12px 20px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.adminPlaceList-saveBtn:hover {
+  background: #f30511;
+  transform: translateY(-1px);
+}
+
+/* Responsive Design - Tablet */
+@media (max-width: 768px) {
+  .adminPlaceList-header {
+    flex-direction: column;
+    gap: 16px;
+    text-align: center;
+    padding: 16px;
+  }
+
+  .adminPlaceList-title {
+    font-size: 24px;
+    justify-content: center;
+  }
+
+  .adminPlaceList-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .adminPlaceList-card {
+    margin: 0;
+  }
+
+  .adminPlaceList-cardHeader {
+    flex-direction: column;
+    gap: 12px;
+    text-align: center;
+    padding: 16px;
+  }
+
+  .adminPlaceList-placeName {
+    margin-right: 0;
+    text-align: center;
+  }
+
+  .adminPlaceList-pagination {
+    flex-wrap: wrap;
+    gap: 8px;
+    padding: 16px;
+  }
+
+  .adminPlaceList-pageNumbers {
+    order: 3;
+    width: 100%;
+    justify-content: center;
+    margin: 8px 0 0 0;
+  }
+
+  .adminPlaceList-modalOverlay {
+    padding: 16px;
+  }
+
+  .adminPlaceList-modal {
+    margin: 0;
+    max-height: 85vh;
+  }
+
+  .adminPlaceList-modalHeader,
+  .adminPlaceList-form {
+    padding: 20px;
+  }
+
+  .adminPlaceList-coordsGroup {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .adminPlaceList-modalFooter {
+    flex-direction: column-reverse;
+    gap: 8px;
+  }
+
+  .adminPlaceList-cancelBtn,
+  .adminPlaceList-saveBtn {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+/* Responsive Design - Mobile */
+@media (max-width: 480px) {
+  .adminPlaceList-header {
+    padding: 12px;
+    margin-bottom: 20px;
+  }
+
+  .adminPlaceList-title {
+    font-size: 20px;
+  }
+
+  .adminPlaceList-icon {
+    width: 24px;
+    height: 24px;
+  }
+
+  .adminPlaceList-stats {
+    padding: 6px 12px;
+  }
+
+  .adminPlaceList-count {
+    font-size: 12px;
+  }
+
+  .adminPlaceList-grid {
+    gap: 12px;
+  }
+
+  .adminPlaceList-cardHeader {
+    padding: 12px;
+  }
+
+  .adminPlaceList-placeName {
+    font-size: 16px;
+  }
+
+  .adminPlaceList-editBtn {
+    padding: 6px 12px;
+    font-size: 12px;
+  }
+
+  .adminPlaceList-cardBody {
+    padding: 12px;
+  }
+
+  .adminPlaceList-field {
+    flex-direction: column;
+    margin-bottom: 8px;
+  }
+
+  .adminPlaceList-label {
+    min-width: auto;
+    margin-right: 0;
+    margin-bottom: 4px;
+    font-size: 12px;
+  }
+
+  .adminPlaceList-value {
+    font-size: 13px;
+  }
+
+  .adminPlaceList-coordinates {
+    font-size: 11px;
+    padding: 3px 6px;
+  }
+
+  .adminPlaceList-pagination {
+    padding: 12px;
+    gap: 6px;
+  }
+
+  .adminPlaceList-pageBtn {
+    padding: 8px 12px;
+    font-size: 12px;
+  }
+
+  .adminPlaceList-pageNumber {
+    padding: 6px 8px;
+    font-size: 12px;
+    min-width: 32px;
+  }
+
+  .adminPlaceList-modalOverlay {
+    padding: 12px;
+  }
+
+  .adminPlaceList-modalHeader {
+    padding: 16px;
+  }
+
+  .adminPlaceList-modalTitle {
+    font-size: 18px;
+  }
+
+  .adminPlaceList-form {
+    padding: 16px;
+  }
+
+  .adminPlaceList-formGroup {
+    margin-bottom: 16px;
+  }
+
+  .adminPlaceList-formLabel {
+    font-size: 13px;
+  }
+
+  .adminPlaceList-formInput,
+  .adminPlaceList-formTextarea {
+    padding: 10px;
+    font-size: 13px;
+  }
+
+  .adminPlaceList-cancelBtn,
+  .adminPlaceList-saveBtn {
+    padding: 10px 16px;
+    font-size: 13px;
+  }
+}
+
+/* Ultra-wide screens */
+@media (min-width: 1400px) {
+  .adminPlaceList-grid {
+    grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+    gap: 32px;
+  }
+
+  .adminPlaceList-header {
+    padding: 24px;
+  }
+
+  .adminPlaceList-title {
+    font-size: 32px;
+  }
+}
+
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+  /* Already using dark theme as default */
+  .adminPlaceList-container {
+    background-color: #0a0a0a;
+  }
+
+  .adminPlaceList-card {
+    background: #1a1a1a;
+    border-color: #2a2a2a;
+  }
+
+  .adminPlaceList-cardHeader {
+    background: linear-gradient(135deg, #1a1a1a 0%, #0a0a0a 100%);
+    border-bottom-color: #2a2a2a;
+  }
+
+  .adminPlaceList-modal {
+    background: #1a1a1a;
+    border-color: #2a2a2a;
+  }
+
+  .adminPlaceList-modalHeader {
+    background: linear-gradient(135deg, #1a1a1a 0%, #0a0a0a 100%);
+    border-bottom-color: #2a2a2a;
+  }
+
+  .adminPlaceList-formInput,
+  .adminPlaceList-formTextarea {
+    background: #1a1a1a;
+    border-color: #2a2a2a;
+  }
+
+  .adminPlaceList-formInput:focus,
+  .adminPlaceList-formTextarea:focus {
+    background: #0a0a0a;
+  }
+
+  .adminPlaceList-cancelBtn {
+    background: #2a2a2a;
+    border-color: #3a3a3a;
+  }
+
+  .adminPlaceList-cancelBtn:hover {
+    background: #3a3a3a;
+  }
+}
+
+/* Print styles */
+@media print {
+  .adminPlaceList-editBtn,
+  .adminPlaceList-pagination,
+  .adminPlaceList-modalOverlay {
+    display: none;
+  }
+
+  .adminPlaceList-container {
+    background: white;
+    padding: 0;
+  }
+
+  .adminPlaceList-card {
+    border: 1px solid #000;
+    break-inside: avoid;
+    margin-bottom: 20px;
+  }
+
+  .adminPlaceList-header {
+    background: none;
+    color: black;
+  }
+}
+
+/* Accessibility improvements */
+@media (prefers-reduced-motion: reduce) {
+  .adminPlaceList-card,
+  .adminPlaceList-editBtn,
+  .adminPlaceList-pageBtn,
+  .adminPlaceList-pageNumber,
+  .adminPlaceList-cancelBtn,
+  .adminPlaceList-saveBtn,
+  .adminPlaceList-formInput,
+  .adminPlaceList-formTextarea,
+  .adminPlaceList-modal {
+    transition: none;
+  }
+
+  .adminPlaceList-spinner {
+    animation: none;
+  }
+
+  .adminPlaceList-modal {
+    animation: none;
+  }
+}
+
+/* High contrast mode */
+@media (prefers-contrast: high) {
+  .adminPlaceList-card {
+    border: 2px solid #000;
+  }
+
+  .adminPlaceList-editBtn,
+  .adminPlaceList-pageBtn,
+  .adminPlaceList-saveBtn {
+    border: 2px solid #000;
+  }
+
+  .adminPlaceList-formInput,
+  .adminPlaceList-formTextarea {
+    border: 2px solid #000;
+  }
+}

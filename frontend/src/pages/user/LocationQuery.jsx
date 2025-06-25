@@ -33,7 +33,11 @@ function LocationQuery() {
       }
     } catch (error) {
       console.error("Error querying address:", error);
-      setErrorMessage(error?.response?.data?.message || error.message || "Server error, try later.");
+      setErrorMessage(
+        error?.response?.data?.message ||
+          error.message ||
+          "Server error, try later."
+      );
       setErrorModal(true);
     }
   };
@@ -41,22 +45,24 @@ function LocationQuery() {
   return (
     <>
       <div className="nearbySearchContainer">
-        <h2 className="nearbySearchTitle">Find Nearby Places (Privacy Preserved)</h2>
+        <h2 className="nearbySearchTitle">
+          Find Nearby Places (Privacy Preserved)
+        </h2>
 
         <form className="nearbySearchForm" onSubmit={handleSubmit}>
           <select
-    name="placeType"
-    value={placeType}
-    onChange={(e) => setPlaceType(e.target.value)}
-    className="nearbySearchInput"
-    required
-  >
-    <option value="">Select Type</option>
-    <option value="Hospital">Hospital</option>
-    <option value="School">School</option>
-    <option value="Police Station">Police Station</option>
-    <option value="Fire Station">Fire Station</option>
-  </select>
+            name="placeType"
+            value={placeType}
+            onChange={(e) => setPlaceType(e.target.value)}
+            className="nearbySearchInput"
+            required
+          >
+            <option value="">Select Type</option>
+            <option value="Hospital">Hospital</option>
+            <option value="School">School</option>
+            <option value="Police Station">Police Station</option>
+            <option value="Fire Station">Fire Station</option>
+          </select>
           <input
             type="number"
             step="any"
@@ -84,7 +90,10 @@ function LocationQuery() {
           {Array.isArray(results) && results.length > 0 ? (
             results.map((place) => (
               <li key={place._id} className="nearbySearchItem">
-                Place Name: <strong>{place.name}</strong> | Address: <strong>{place?.address}</strong> | Type: <strong>{place?.type}</strong>| Contact: <strong>{place?.phone}</strong>
+                Place Name: <strong>{place.name}</strong> | Address:{" "}
+                <strong>{place?.address}</strong> | Type:{" "}
+                <strong>{place?.type}</strong>| Contact:{" "}
+                <strong>{place?.phone}</strong>
               </li>
             ))
           ) : (

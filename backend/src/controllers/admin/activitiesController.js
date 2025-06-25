@@ -74,3 +74,109 @@ export const Getuserprofile = async (req, res) => {
     return res.status(500).json({ message: "Server error" });
   }
 };
+
+export const getAdminPlaces = async (req, res) => {
+  try {
+    const page = parseInt(req.query.page) || 1;
+    const limit = parseInt(req.query.limit) || 10;
+
+    const skip = (page - 1) * limit;
+
+    const [places, total] = await Promise.all([
+      Place.find().skip(skip).limit(limit),
+      Place.countDocuments(),
+    ]);
+    if (!places || !total)
+      return res.status(500).json({
+        success: false,
+        message: "server error try later",
+        places,
+        total,
+      });
+
+    return res.status(200).json({
+      success: true,
+      places,
+      total,
+    });
+  } catch (error) {
+    console.error("Error fetching places:", error);
+    return res.status(500).json({
+      success: false,
+      message: "Server Error. Failed to fetch places.",
+    });
+  }
+};
+
+export const updatePlace = async (req, res) => {
+  try {
+    const placeId = req.query.placeId;
+    const { updateData } = req.body;
+
+    if (!placeId) {
+      return res.status(400).json({
+        success: false,
+        message: "Place ID is required",
+      });
+    }
+
+    const updatedPlace = await Place.findByIdAndUpdate(placeId, updateData, {
+      new: true,
+      runValidators: true,
+    });
+
+    if (!updatedPlace) {
+      return res.status(404).json({
+        success: false,
+        message: "Place not found",
+      });
+    }
+
+    return res.status(200).json({
+      success: true,
+      message: "Place updated successfully",
+      updatedPlace,
+    });
+  } catch (error) {
+    console.error("Error updating place:", error);
+    return res.status(500).json({
+      success: false,
+      message: "Server error. Failed to update place.",
+    });
+  }
+};
+
+export const getAdminDetails = async (req, res) => {
+  try {
+    const id = req.user.id;
+    const findAdmin = await usermodel.findById(id);
+    if (!findAdmin) {
+      return res
+        .status(500)
+        .json({ success: false, message: "coudint find admin please login" });
+    }
+
+    return res
+      .status(200)
+      .json({ success: true, message: "successFully identified admin" });
+  } catch (error) {
+    return res.status(500).json({ success: false, message: "server error" });
+  }
+};
+
+export const logoutAdmin = (req, res) => {
+  try {
+    res.clearCookie("token", {
+      httpOnly: true,
+      secure: process.env.NODE_ENV === "production",
+      sameSite: "Lax",
+    });
+    return res
+      .status(200)
+      .json({ success: true, message: "Logged out successfully" });
+  } catch (error) {
+    return res
+      .status(500)
+      .json({ success: false, message: " Couldint Logged out try later" });
+  }
+};

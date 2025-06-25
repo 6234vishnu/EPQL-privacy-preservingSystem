@@ -1,12 +1,11 @@
 /* Netflix-themed User Profile Styles */
 .userProfileContainer {
-  
   background: linear-gradient(135deg, #141414 0%, #000000 100%);
-      border-radius: 25px;
+  border-radius: 25px;
   display: flex;
   justify-content: center;
   align-items: flex-start;
-  font-family: 'Helvetica Neue', Arial, sans-serif;
+  font-family: "Helvetica Neue", Arial, sans-serif;
 }
 .userProfileButtonDisabled {
   opacity: 0.6;
@@ -230,13 +229,18 @@
 }
 
 .userProfileButtonPrimary::before {
-  content: '';
+  content: "";
   position: absolute;
   top: 0;
   left: -100%;
   width: 100%;
   height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.2),
+    transparent
+  );
   transition: left 0.5s;
 }
 
@@ -301,24 +305,22 @@
 
 /* Large Desktop */
 @media (min-width: 1200px) {
-  
-  
   .userProfileCard {
     max-width: 900px;
   }
-  
+
   .userProfileHeader {
     padding: 3rem;
   }
-  
+
   .userProfileContent {
     padding: 3rem;
   }
-  
+
   .userProfileName {
     font-size: 2.5rem;
   }
-  
+
   .userProfileImageWrapper {
     width: 140px;
     height: 140px;
@@ -327,41 +329,39 @@
 
 /* Tablet */
 @media (max-width: 768px) {
- 
-  
   .userProfileCard {
     margin: 0 0.5rem;
   }
-  
+
   .userProfileHeader {
     padding: 2rem;
     flex-direction: column;
     text-align: center;
     gap: 1.5rem;
   }
-  
+
   .userProfileContent {
     padding: 2rem;
   }
-  
+
   .userProfileFormGrid {
     grid-template-columns: 1fr;
     gap: 1.5rem;
   }
-  
+
   .userProfileName {
     font-size: 2rem;
   }
-  
+
   .userProfileImageWrapper {
     width: 100px;
     height: 100px;
   }
-  
+
   .userProfileHeaderInfo {
     order: 1;
   }
-  
+
   .userProfileActions {
     order: 2;
   }
@@ -369,56 +369,54 @@
 
 /* Mobile */
 @media (max-width: 480px) {
-  
-  
   .userProfileCard {
     border-radius: 12px;
     margin: 0;
   }
-  
+
   .userProfileHeader {
     padding: 1.5rem;
     gap: 1.25rem;
   }
-  
+
   .userProfileContent {
     padding: 1.5rem;
   }
-  
+
   .userProfileName {
     font-size: 1.75rem;
   }
-  
+
   .userProfileEmail {
     font-size: 1rem;
   }
-  
+
   .userProfileImageWrapper {
     width: 80px;
     height: 80px;
   }
-  
+
   .userProfileInput,
   .userProfileTextarea,
   .userProfileValue {
     padding: 0.875rem;
     font-size: 0.95rem;
   }
-  
+
   .userProfileButton {
     padding: 0.75rem 1.25rem;
     font-size: 0.9rem;
   }
-  
+
   .userProfileSubmitButton {
     padding: 0.875rem 2rem;
     font-size: 0.95rem;
   }
-  
+
   .userProfileForm {
     gap: 1.5rem;
   }
-  
+
   .userProfileFormGrid {
     gap: 1.25rem;
   }
@@ -426,32 +424,30 @@
 
 /* Extra Small Mobile */
 @media (max-width: 320px) {
- 
-  
   .userProfileHeader {
     padding: 1.25rem;
   }
-  
+
   .userProfileContent {
     padding: 1.25rem;
   }
-  
+
   .userProfileName {
     font-size: 1.5rem;
   }
-  
+
   .userProfileImageWrapper {
     width: 70px;
     height: 70px;
   }
-  
+
   .userProfileInput,
   .userProfileTextarea,
   .userProfileValue {
     padding: 0.75rem;
     font-size: 0.9rem;
   }
-  
+
   .userProfileButton {
     padding: 0.625rem 1rem;
     font-size: 0.85rem;
@@ -463,12 +459,12 @@
   .userProfileContainer {
     background: linear-gradient(135deg, #0a0a0a 0%, #000000 100%);
   }
-  
+
   .userProfileCard {
     background: rgba(15, 15, 15, 0.98);
     border-color: rgba(229, 9, 20, 0.4);
   }
-  
+
   .userProfileHeader {
     background: linear-gradient(135deg, #151515 0%, #050505 100%);
   }
@@ -481,11 +477,11 @@
   .userProfileValue {
     border-width: 3px;
   }
-  
+
   .userProfileButton {
     border-width: 2px;
   }
-  
+
   .userProfileImage {
     border-width: 5px;
   }
@@ -501,7 +497,7 @@
   .userProfileImageOverlay {
     transition: none;
   }
-  
+
   .userProfileButtonPrimary::before {
     display: none;
   }

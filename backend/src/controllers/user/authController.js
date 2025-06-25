@@ -207,3 +207,38 @@ export const updateUserProfile = async (req, res) => {
       .json({ success: false, message: "Unauthorized - No token found" });
   }
 };
+
+export const getUserDetails = async (req, res) => {
+  try {
+    const id = req.user.id;
+    const findUser = await usermodel.findById(id);
+    if (!findUser) {
+      return res
+        .status(500)
+        .json({ success: false, message: "coudint find user please login" });
+    }
+
+    return res
+      .status(200)
+      .json({ success: true, message: "successFully identified user" });
+  } catch (error) {
+    return res.status(500).json({ success: false, message: "server error" });
+  }
+};
+
+export const logoutUser = (req, res) => {
+  try {
+    res.clearCookie("token", {
+      httpOnly: true,
+      secure: process.env.NODE_ENV === "production",
+      sameSite: "Lax",
+    });
+    return res
+      .status(200)
+      .json({ success: true, message: "Logged out successfully" });
+  } catch (error) {
+    return res
+      .status(500)
+      .json({ success: false, message: " Couldint Logged out try later" });
+  }
+};
